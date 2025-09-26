@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Register Club | 3ZERO Club</title>
+    <meta name="description" content="Register your 3ZERO Club and join the global movement for zero net carbon emissions, zero wealth concentration, and zero unemployment.">
+    <link rel="icon" href="favicon.ico" type="image/x-icon" sizes="16x16"/>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1a73e8;
+            --primary-dark: #0d47a1;
+            --accent-color: #4caf50;
+            --text-dark: #202124;
+            --text-light: #5f6368;
+            --background-light: #f8f9fa;
+            --white: #ffffff;
+            --border-color: #dadce0;
+            --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        .header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            height: 50px;
+        }
+        
+        .nav-desktop {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary-color);
+        }
+        
+        .nav-link i {
+            font-size: 16px;
+        }
+        
+        .register-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .register-btn:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--text-dark);
+        }
+        
+        .mobile-menu {
+            display: none;
+            background-color: var(--white);
+            padding: 20px;
+            box-shadow: var(--shadow);
+        }
+        
+        .mobile-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .mobile-menu.show {
+            display: block;
+        }
+        
+        /* Registration Form Styles */
+        .registration-hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .registration-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .registration-hero p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .registration-container {
+            max-width: 800px;
+            margin: 0 auto 60px;
+            background: var(--white);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+        
+        .registration-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            padding: 25px 30px;
+        }
+        
+        .registration-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+        
+        .registration-form {
+            padding: 30px;
+        }
+        
+        .form-section {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .form-section-title {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2);
+        }
+        
+        .input-group {
+            display: flex;
+            align-items: center;
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .input-group .form-control {
+            border: none;
+            flex: 1;
+        }
+        
+        .input-group-text {
+            padding: 0 15px;
+            background: var(--background-light);
+            height: 100%;
+            display: flex;
+            align-items: center;
+            color: var(--text-light);
+            cursor: pointer;
+        }
+        
+        .form-text {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-top: 5px;
+        }
+        
+        .password-strength {
+            height: 5px;
+            background-color: #e0e0e0;
+            border-radius: 3px;
+            margin-top: 8px;
+            overflow: hidden;
+        }
+        
+        .password-strength-bar {
+            height: 100%;
+            width: 0%;
+            transition: width 0.3s, background-color 0.3s;
+        }
+        
+        .btn-register {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .btn-register:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        .login-redirect {
+            text-align: center;
+            margin-top: 20px;
+            color: var(--text-light);
+        }
+        
+        .login-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .login-link:hover {
+            text-decoration: underline;
+        }
+        
+        /* Footer Styles */
+        .footer {
+            background-color: #1a1a2e;
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section-title {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .footer-logo {
+            height: 50px;
+            margin-bottom: 15px;
+        }
+        
+        .footer-text {
+            margin-bottom: 15px;
+            color: #b3b3b3;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .social-icon:hover {
+            background-color: var(--primary-color);
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            color: #b3b3b3;
+            text-decoration: none;
+        }
+        
+        .contact-item:hover {
+            color: white;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 20px;
+        }
+        
+        .footer-link {
+            color: #b3b3b3;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .footer-link:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            color: #b3b3b3;
+            font-size: 0.9rem;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow);
+            z-index: 99;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .nav-desktop {
+                display: none;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .registration-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .registration-hero p {
+                font-size: 1rem;
+            }
+            
+            .form-section-title {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header" id="header">
+            <div class="header-content">
+                <a href="/">
+                    <img src="logo.png" alt="3Zero Club Logo" class="logo">
+                </a>
+                <button class="menu-toggle" aria-label="Toggle Menu" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <nav class="nav-desktop">
+                    <a href="/" class="nav-link"><i class="fas fa-home"></i> Home</a>
+                    <a href="/about" class="nav-link"><i class="fas fa-info-circle"></i> About</a>
+                    <a href="/events" class="nav-link"><i class="fas fa-calendar-alt"></i> Events</a>
+                    <a href="/global-centre" class="nav-link"><i class="fas fa-globe"></i> 3Z Global Centre</a>
+                    <a href="/login" class="nav-link"><i class="fas fa-sign-in-alt"></i> Login</a>
+                    <button class="register-btn"><i class="fas fa-user-plus"></i> Register</button>
+                </nav>
+            </div>
+            <!-- Mobile Menu -->
+            <div class="mobile-menu" id="mobileMenu">
+                <nav class="mobile-nav">
+                    <a href="/" class="nav-link"><i class="fas fa-home"></i> Home</a>
+                    <a href="/about" class="nav-link"><i class="fas fa-info-circle"></i> About</a>
+                    <a href="/events" class="nav-link"><i class="fas fa-calendar-alt"></i> Events</a>
+                    <a href="/global-centre" class="nav-link"><i class="fas fa-globe"></i> 3Z Global Centre</a>
+                    <a href="/login" class="nav-link"><i class="fas fa-sign-in-alt"></i> Login</a>
+                    <button class="register-btn"><i class="fas fa-user-plus"></i> Register</button>
+                </nav>
+            </div>
+        </header>
+        
+        <!-- Registration Hero Section -->
+        <section class="registration-hero">
+            <div class="container">
+                <h1>Start Your 3ZERO Club</h1>
+                <p>Join the global movement of young changemakers working towards zero net carbon emissions, zero wealth concentration, and zero unemployment.</p>
+            </div>
+        </section>
+        
+        <!-- Registration Form -->
+        <div class="registration-container">
+            <div class="registration-header">
+                <h2>Club Registration</h2>
+                <p>Complete the form below to register your 3ZERO Club</p>
+            </div>
+            
+            <form class="registration-form" id="registrationForm">
+                <!-- Club Information Section -->
+                <div class="form-section">
+                    <h3 class="form-section-title">
+                        <i class="fas fa-users"></i>
+                        Club Information
+                    </h3>
+                    
+                    <div class="form-group">
+                        <label for="clubName" class="form-label">Club Name *</label>
+                        <input type="text" id="clubName" name="clubName" class="form-control" placeholder="e.g., Green Warriors 3ZERO Club" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="clubType" class="form-label">Club Type *</label>
+                        <select id="clubType" name="clubType" class="form-control" required>
+                            <option value="">-- Select Club Type --</option>
+                            <option value="school">School Club</option>
+                            <option value="university">University Club</option>
+                            <option value="community">Community Club</option>
+                            <option value="corporate">Corporate Club</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="establishmentDate" class="form-label">Establishment Date *</label>
+                        <input type="date" id="establishmentDate" name="establishmentDate" class="form-control" required>
+                    </div>
+                </div>
+                
+                <!-- Location Information Section -->
+                <div class="form-section">
+                    <h3 class="form-section-title">
+                        <i class="fas fa-map-marker-alt"></i>
+                        Location Information
+                    </h3>
+                    
+                    <div class="form-group">
+                        <label for="country" class="form-label">Country *</label>
+                        <select id="country" name="country" class="form-control" required>
+                            <option value="">-- Select Country --</option>
+                            <!-- Countries will be populated by JavaScript -->
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="city" class="form-label">City *</label>
+                        <input type="text" id="city" name="city" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="address" class="form-label">Full Address</label>
+                        <textarea id="address" name="address" class="form-control" rows="3" placeholder="Street address, building, etc."></textarea>
+                    </div>
+                </div>
+                
+                <!-- Key Person Information Section -->
+                <div class="form-section">
+                    <h3 class="form-section-title">
+                        <i class="fas fa-user-tie"></i>
+                        Key Person Information
+                    </h3>
+                    
+                    <div class="form-group">
+                        <label for="keyPersonName" class="form-label">Full Name *</label>
+                        <input type="text" id="keyPersonName" name="keyPersonName" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="keyPersonEmail" class="form-label">Email Address *</label>
+                        <input type="email" id="keyPersonEmail" name="keyPersonEmail" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="keyPersonPhone" class="form-label">Phone Number *</label>
+                        <input type="tel" id="keyPersonPhone" name="keyPersonPhone" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="keyPersonRole" class="form-label">Role/Position *</label>
+                        <input type="text" id="keyPersonRole" name="keyPersonRole" class="form-control" placeholder="e.g., President, Coordinator" required>
+                    </div>
+                </div>
+                
+                <!-- Club Members Section -->
+                <div class="form-section">
+                    <h3 class="form-section-title">
+                        <i class="fas fa-user-friends"></i>
+                        Club Members
+                    </h3>
+                    
+                    <div class="form-group">
+                        <label for="memberCount" class="form-label">Number of Members *</label>
+                        <input type="number" id="memberCount" name="memberCount" class="form-control" min="5" required>
+                        <div class="form-text">Minimum 5 members required to form a club</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="memberAges" class="form-label">Age Range of Members *</label>
+                        <div style="display: flex; gap: 10px; align-items: center;">
+                            <input type="number" id="minAge" name="minAge" class="form-control" placeholder="Min" min="12" max="35" required>
+                            <span>to</span>
+                            <input type="number" id="maxAge" name="maxAge" class="form-control" placeholder="Max" min="12" max="35" required>
+                        </div>
+                        <div class="form-text">Members must be between 12-35 years old with no more than 7 years age difference</div>
+                    </div>
+                </div>
+                
+                <!-- Account Setup Section -->
+                <div class="form-section">
+                    <h3 class="form-section-title">
+                        <i class="fas fa-lock"></i>
+                        Account Setup
+                    </h3>
+                    
+                    <div class="form-group">
+                        <label for="password" class="form-label">Password *</label>
+                        <div class="input-group">
+                            <input type="password" id="password" name="password" class="form-control" required>
+                            <span class="input-group-text" id="togglePassword">
+                                <i class="fas fa-eye-slash"></i>
+                            </span>
+                        </div>
+                        <div class="password-strength">
+                            <div class="password-strength-bar" id="passwordStrengthBar"></div>
+                        </div>
+                        <div class="form-text">Minimum 8 characters with letters, numbers, and special characters</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="confirmPassword" class="form-label">Confirm Password *</label>
+                        <div class="input-group">
+                            <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" required>
+                            <span class="input-group-text" id="toggleConfirmPassword">
+                                <i class="fas fa-eye-slash"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn-register">
+                    <i class="fas fa-paper-plane"></i> Submit Registration
+                </button>
+                
+                <div class="login-redirect">
+                    Already have an account? <a href="/login" class="login-link">Login here</a>
+                </div>
+            </form>
+        </div>
+        
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-section">
+                        <a href="/">
+                            <img src="logo-white.png" alt="3ZERO Club Logo" class="footer-logo">
+                        </a>
+                        <p class="footer-text">
+                            The 3ZERO Club is an initiative towards achieving the Nobel Peace Laureate Professor Muhammad Yunus's vision 
+                            of creating a world of three zeros — zero net carbon emission, zero wealth concentration for ending poverty, 
+                            and zero unemployment by unleashing entrepreneurship in all.
+                        </p>
+                    </div>
+                    <div class="footer-section">
+                        <h4 class="footer-section-title">Our Partners</h4>
+                        <p class="footer-text">Powered by</p>
+                        <div class="partner-logos">
+                            <img src="https://via.placeholder.com/120x40/0A2463/FFFFFF?text=Yunus+Centre" alt="Yunus Centre" class="partner-logo">
+                            <img src="https://via.placeholder.com/120x40/1E91D6/FFFFFF?text=Social+Business" alt="Social Business" class="partner-logo">
+                        </div>
+                        <p class="footer-text">Supported by</p>
+                        <div class="supporter-logos">
+                            <img src="https://via.placeholder.com/120x40/FF6B6B/FFFFFF?text=Global+Supporter" alt="Global Supporter" class="supporter-logo">
+                        </div>
+                    </div>
+                    <div class="footer-section">
+                        <h4 class="footer-section-title">Connect With Us</h4>
+                        <div class="social-icons">
+                            <a href="https://www.facebook.com/3zclub" class="social-icon" target="_blank" aria-label="Facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="https://www.instagram.com/3zeroclub/" class="social-icon" target="_blank" aria-label="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://x.com/3zeroClub" class="social-icon" target="_blank" aria-label="Twitter">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/company/3zero-club/" class="social-icon" target="_blank" aria-label="LinkedIn">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="https://www.youtube.com/@3zeroclub494" class="social-icon" target="_blank" aria-label="YouTube">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                        </div>
+                        <div class="contact-info">
+                            <a href="https://maps.google.com" class="contact-item" target="_blank">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Mirpur, Dhaka, Bangladesh</span>
+                            </a>
+                            <a href="mailto:connect@3zero.club" class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <span>connect@3zero.club</span>
+                            </a>
+                            <a href="tel:+880XXXXXXXXXX" class="contact-item">
+                                <i class="fas fa-phone-alt"></i>
+                                <span>+880 XXXX XXXXXX</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <a href="/registration" class="footer-link"><i class="fas fa-user-plus"></i> Registration</a>
+                    <a href="/resources" class="footer-link"><i class="fas fa-book"></i> Resources</a>
+                    <a href="/application-faq" class="footer-link"><i class="fas fa-question-circle"></i> FAQ</a>
+                    <a href="/newsletters" class="footer-link"><i class="fas fa-newspaper"></i> Newsletters</a>
+                    <a href="/write-to-us" class="footer-link"><i class="fas fa-envelope"></i> Write to Us</a>
+                </div>
+                
+                <div class="copyright">
+                    © 2025. 3ZERO Trust. All Rights Reserved.
+                </div>
+            </div>
+        </footer>
+        
+        <!-- Back to top button -->
+        <button class="back-to-top" id="backToTop" aria-label="Back to top">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+    </div>
+    
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        if (menuToggle && mobileMenu) {
+            menuToggle.addEventListener('click', () => {
+                mobileMenu.classList.toggle('show');
+                menuToggle.innerHTML = mobileMenu.classList.contains('show') ? 
+                    '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+            });
+        }
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.mobile-nav .nav-link, .mobile-nav .register-btn').forEach(link => {
+            link.addEventListener('click', () => {
+                if (mobileMenu) mobileMenu.classList.remove('show');
+                if (menuToggle) menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Back to top button
+        const backToTopBtn = document.getElementById('backToTop');
+        const header = document.getElementById('header');
+        
+        if (backToTopBtn && header) {
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    backToTopBtn.style.display = 'flex';
+                    backToTopBtn.style.alignItems = 'center';
+                    backToTopBtn.style.justifyContent = 'center';
+                    header.classList.add('scrolled');
+                } else {
+                    backToTopBtn.style.display = 'none';
+                    header.classList.remove('scrolled');
+                }
+            });
+            
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
+        
+        // Add hover effect to all elements with class 'nav-link'
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('mouseenter', () => {
+                if (link.querySelector('i')) {
+                    link.querySelector('i').style.transform = 'scale(1.2)';
+                }
+            });
+            link.addEventListener('mouseleave', () => {
+                if (link.querySelector('i')) {
+                    link.querySelector('i').style.transform = 'scale(1)';
+                }
+            });
+        });
+        
+        // Toggle password visibility
+        document.getElementById('togglePassword').addEventListener('click', function() {
+            const password = document.getElementById('password');
+            const icon = this.querySelector('i');
+            
+            if (password.type === 'password') {
+                password.type = 'text';
+                icon.classList.replace('fa-eye-slash', 'fa-eye');
+            } else {
+                password.type = 'password';
+                icon.classList.replace('fa-eye', 'fa-eye-slash');
+            }
+        });
+
+        // Toggle confirm password visibility
+        document.getElementById('toggleConfirmPassword').addEventListener('click', function() {
+            const confirmPassword = document.getElementById('confirmPassword');
+            const icon = this.querySelector('i');
+            
+            if (confirmPassword.type === 'password') {
+                confirmPassword.type = 'text';
+                icon.classList.replace('fa-eye-slash', 'fa-eye');
+            } else {
+                confirmPassword.type = 'password';
+                icon.classList.replace('fa-eye', 'fa-eye-slash');
+            }
+        });
+
+        // Password strength indicator
+        document.getElementById('password').addEventListener('input', function() {
+            const password = this.value;
+            const strengthBar = document.getElementById('passwordStrengthBar');
+            let strength = 0;
+            
+            // Length check
+            if (password.length >= 8) strength += 25;
+            if (password.length >= 12) strength += 25;
+            
+            // Character diversity
+            if (/[A-Z]/.test(password)) strength += 15;
+            if (/[0-9]/.test(password)) strength += 15;
+            if (/[^A-Za-z0-9]/.test(password)) strength += 20;
+            
+            // Update strength bar
+            strengthBar.style.width = strength + '%';
+            
+            // Update color based on strength
+            if (strength < 50) {
+                strengthBar.style.backgroundColor = '#dc3545'; // Red
+            } else if (strength < 75) {
+                strengthBar.style.backgroundColor = '#fd7e14'; // Orange
+            } else {
+                strengthBar.style.backgroundColor = '#28a745'; // Green
+            }
+        });
+        
+        // Age validation
+        const minAge = document.getElementById('minAge');
+        const maxAge = document.getElementById('maxAge');
+        
+        function validateAgeRange() {
+            if (minAge.value && maxAge.value) {
+                const min = parseInt(minAge.value);
+                const max = parseInt(maxAge.value);
+                
+                if (min < 12 || min > 35) {
+                    minAge.setCustomValidity('Minimum age must be between 12-35');
+                    return false;
+                } else if (max < 12 || max > 35) {
+                    maxAge.setCustomValidity('Maximum age must be between 12-35');
+                    return false;
+                } else if (min > max) {
+                    minAge.setCustomValidity('Minimum age cannot be greater than maximum age');
+                    return false;
+                } else if (max - min > 7) {
+                    minAge.setCustomValidity('Age difference cannot exceed 7 years');
+                    return false;
+                } else {
+                    minAge.setCustomValidity('');
+                    maxAge.setCustomValidity('');
+                    return true;
+                }
+            }
+            return false;
+        }
+        
+        minAge.addEventListener('change', validateAgeRange);
+        maxAge.addEventListener('change', validateAgeRange);
+        
+        // Country dropdown population
+        const countries = [
+            "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia", 
+            "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", 
+            "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria", 
+            "Burkina Faso", "Burundi", "Cabo Verde", "Cambodia", "Cameroon", "Canada", "Central African Republic", "Chad", 
+            "Chile", "China", "Colombia", "Comoros", "Congo", "Costa Rica", "Croatia", "Cuba", "Cyprus", "Czech Republic", 
+            "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", 
+            "Eritrea", "Estonia", "Eswatini", "Ethiopia", "Fiji", "Finland", "France", "Gabon", "Gambia", "Georgia", 
+            "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Honduras", 
+            "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Jamaica", "Japan", 
+            "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Korea, North", "Korea, South", "Kosovo", "Kuwait", "Kyrgyzstan", 
+            "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", 
+            "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", 
+            "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar", 
+            "Namibia", "Nauru", "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Macedonia", 
+            "Norway", "Oman", "Pakistan", "Palau", "Palestine", "Panama", "Papua New Guinea", "Paraguay", "Peru", 
+            "Philippines", "Poland", "Portugal", "Qatar", "Romania", "Russia", "Rwanda", "Saint Kitts and Nevis", 
+            "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", 
+            "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", 
+            "Solomon Islands", "Somalia", "South Africa", "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", 
+            "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Timor-Leste", "Togo", 
+            "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Tuvalu", "Uganda", "Ukraine", 
+            "United Arab Emirates", "United Kingdom", "United States", "Uruguay", "Uzbekistan", "Vanuatu", "Vatican City", 
+            "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe"
+        ];
+        
+        const countrySelect = document.getElementById('country');
+        countries.forEach(country => {
+            const option = document.createElement('option');
+            option.value = country;
+            option.textContent = country;
+            countrySelect.appendChild(option);
+        });
+        
+        // Form submission
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validate age range
+            if (!validateAgeRange()) {
+                alert('Please correct the age range values.');
+                return;
+            }
+            
+            // Validate password match
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            
+            if (password !== confirmPassword) {
+                alert('Passwords do not match. Please try again.');
+                return;
+            }
+            
+            // If all validations pass, you would typically submit the form to a server here
+            alert('Registration submitted successfully! Your application will be reviewed within 5-7 business days.');
+            // this.submit(); // Uncomment to actually submit the form
+        });
+    </script>
+</body>
+</html>

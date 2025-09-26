@@ -1,0 +1,46 @@
+# -------------------------
+# OS / Editor junk files
+# -------------------------
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*.bak
+*.tmp
+*.log
+
+# -------------------------
+# PHP / Server junk
+# -------------------------
+error_log
+php_errors.log
+*.sql
+*.sqlite
+*.env        # environment variables (db passwords, API keys)
+
+# -------------------------
+# Project specific
+# -------------------------
+uploads/      # user uploads folder (images, docs, etc.)
+*.cache
+*.session
+*.sess
+*.lock
+
+# -------------------------
+# Composer (if used in future)
+# -------------------------
+vendor/
+composer.lock
+
+# -------------------------
+# Node / Frontend (if ever added later)
+# -------------------------
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# -------------------------
+# VS Code settings (optional)
+# -------------------------
+.vscode/
